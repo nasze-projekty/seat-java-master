@@ -1,0 +1,32 @@
+applicationName:
+appPath:
+browser: Firefox
+browserStack:
+browserVersion:
+build:
+captureURL:
+customBrowserImpl:
+device:
+gridURL: http://localhost:4444/wd/hub
+headless:
+jiraPassword:
+jiraResultFieldName:
+jiraResultTransition:
+jiraURL:
+jiraUsername:
+jqlQuery:
+maximise:
+maxRetryCount: 2
+platform:
+platformVersion:
+proxy:
+resolution:
+resultVersion:
+reuseBrowser:
+sauce:
+spiraURL:
+sutName:
+sutVersion:
+threads:
+videoCaptureUrl:
+zapiCycleRegEx:
