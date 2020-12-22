@@ -25,7 +25,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfAllE
 import static ru.yandex.qatools.htmlelements.utils.HtmlElementUtils.*;
 
 /**
- * All things Frameworkium-related dealing with PageObject element visibility.
+ * All things Framework-related dealing with PageObject element visibility.
  */
 public final class Visibility {
 
@@ -49,7 +49,7 @@ public final class Visibility {
      * The main entry point for {@link BasePage}.
      * For each Field:
      * <ul>
-     * <li>Ensures either 0 or 1 Frameworkium Visibility annotations are present.</li>
+     * <li>Ensures either 0 or 1 Framework Visibility annotations are present.</li>
      * <li>Waits for the (in)visibility of elements based upon annotations.</li>
      * </ul>
      *

@@ -37,7 +37,7 @@ public class SpiraExecution {
             obj.put("TestRunTypeId", 0);
             obj.put("TestRunFormatId", 0);
             obj.put("ExecutionStatusId", resultId);
-            obj.put("RunnerName", "Frameworkium");
+            obj.put("RunnerName", "Framework");
             obj.put("RunnerTestName", result.getMethod().getMethodName());
             obj.put("RunnerStackTrace", comment);
 

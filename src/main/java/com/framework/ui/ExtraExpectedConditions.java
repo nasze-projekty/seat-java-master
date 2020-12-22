@@ -11,7 +11,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * Frameworkium extension of {@link ExpectedConditions}.
+ * Framework extension of {@link ExpectedConditions}.
  *
  * <p>This provides useful {@link ExpectedCondition}'s for our lazy proxied
  * {@link WebElement}, {@link TypifiedElement} and {@link HtmlElement}'s.

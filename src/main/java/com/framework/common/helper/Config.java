@@ -30,53 +30,5 @@ public class Config {
         return getProperty("baseUrl");
     }
 
-    public static String getAuthTokenUsername() {
-        return properties.getProperty("authtoken.username");
-    }
-
-    public static String getAuthTokenPassword() {
-        return properties.getProperty("authtoken.password");
-    }
-
-    public static String getAuthorisedEmail() {
-        return properties.getProperty("authorise.email");
-    }
-
-    public static String getAuthorisedUser() {
-        return properties.getProperty("authorise.user");
-    }
-
-    public static String getAuthorisedPassword() {
-        return properties.getProperty("authorise.password");
-    }
-
-    public static String getApiToken() {
-        return properties.getProperty("api.token");
-    }
-
-    public static String getChatBotClintId() {
-        return properties.getProperty("core.chatbot.clientId");
-    }
-
-    public static String getFeClintId() {
-        return properties.getProperty("core.fe.clientId");
-    }
-
-    public static String getHiveClintId() {
-        return properties.getProperty("core.hive.clientId");
-    }
-
-    public static String getSxsClintId() {
-        return properties.getProperty("core.sxs.clientId");
-    }
-
-    public static String getCoreApiHeaderKey() {
-        return properties.getProperty("header.key");
-    }
-
-    public static String getCoreApiHeaderValue() {
-        return properties.getProperty("header.value");
-    }
-
 
 }

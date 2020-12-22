@@ -1,5 +1,6 @@
 package theinternet.pages;
 
+import com.framework.common.helper.Config;
 import com.framework.ui.annotations.Visible;
 import com.framework.ui.pages.BasePage;
 import com.framework.ui.pages.PageFactory;
@@ -75,7 +76,7 @@ public class WelcomePage extends BasePage<WelcomePage> {
     @Step("Navigate to https://the-internet.herokuapp.com")
     public static WelcomePage open() {
         return PageFactory.newInstance(
-                WelcomePage.class, "https://the-internet.herokuapp.com");
+                WelcomePage.class, Config.getBaseURL());
     }
 
     @Step("Click the Dynamic Loading link - user: {0}, password {1}")

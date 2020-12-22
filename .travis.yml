@@ -22,7 +22,7 @@ cache:
 env:
   global:
     - CAPTURE_URL="http://capture-6c06138r.cloudapp.net"
-    - SUT_NAME="frameworkium-examples"
+    - SUT_NAME="framework-examples"
     - SUT_VERSION=${TRAVIS_BRANCH}
     - THREAD_COUNT=2
     - SELENIUM_MAJ_VER=3.141
@@ -74,7 +74,7 @@ script:
 
   # Query Jira for which test to run and then log results to Jira
   # Disabled until we have a JIRA to use
-  # - mvn verify -B -Dbrowser=chrome -Dheadless=true -DgridURL=http://localhost:4444/wd/hub -DjiraURL="http://52.29.130.45:8080" -DjqlQuery="issueKey=TEST-1" -DresultVersion="BUILD TEST VERSION" -DzapiCycleRegex="Test Cycle" -DjiraUsername=frameworkium -DjiraPassword=frameworkium -DcaptureURL=${CAPTURE_URL} -DsutName="${SUT_NAME}" -DsutVersion="${SUT_VERSION}"
+  # - mvn verify -B -Dbrowser=chrome -Dheadless=true -DgridURL=http://localhost:4444/wd/hub -DjiraURL="http://52.29.130.45:8080" -DjqlQuery="issueKey=TEST-1" -DresultVersion="BUILD TEST VERSION" -DzapiCycleRegex="Test Cycle" -DjiraUsername=framework -DjiraPassword=framework-DcaptureURL=${CAPTURE_URL} -DsutName="${SUT_NAME}" -DsutVersion="${SUT_VERSION}"
 
   # SauceLabs- disabled until we have a sauce account to use
   # - mvn verify -Dsauce=true -Dplatform=ios -Dbrowser=safari -DplatformVersion=8.0 -Ddevice=iPad -DcaptureURL=${CAPTURE_URL} -DsutName="${SUT_NAME}" -DsutVersion="${SUT_VERSION}"

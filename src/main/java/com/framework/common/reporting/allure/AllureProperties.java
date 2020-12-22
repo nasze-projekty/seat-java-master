@@ -28,7 +28,7 @@ public class AllureProperties {
 
     public static void createUI() {
         Properties props = new Properties();
-        props.putAll(getAllFrameworkiumProperties());
+        props.putAll(getAllFrameworProperties());
         props.putAll(getCommonProps());
         props.putAll(getUIProperties());
         save(props);
@@ -36,12 +36,12 @@ public class AllureProperties {
 
     public static void createAPI() {
         Properties props = new Properties();
-        props.putAll(getAllFrameworkiumProperties());
+        props.putAll(getAllFrameworProperties());
         props.putAll(getCommonProps());
         save(props);
     }
 
-    private static Properties getAllFrameworkiumProperties() {
+    private static Properties getAllFrameworProperties() {
         Map<String, String> allProperties =
                 Arrays.stream(Property.values())
                         .filter(Property::isSpecified)

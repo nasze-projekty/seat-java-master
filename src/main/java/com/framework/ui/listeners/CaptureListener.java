@@ -99,15 +99,15 @@ public class CaptureListener implements WebDriverEventListener, ITestListener {
 
     @Override
     public void beforeScript(String script, WebDriver driver) {
-        // ignore scripts which are part of Frameworkium
-        if (!isFrameworkiumScript(script)) {
+        // ignore scripts which are part of Framework
+        if (!isFrameworkScript(script)) {
             takeScreenshotAndSend(
                     new Command("script", "n/a", abbreviate(script, 42)),
                     driver);
         }
     }
 
-    private boolean isFrameworkiumScript(String script) {
+    private boolean isFrameworkScript(String script) {
         String waitForAngularRequestsPrefix =
                 "var callback = arguments[arguments.length - 1];\n";
 

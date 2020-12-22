@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Wait;
 
 /**
- * Frameworkium implementation of waiting for JS events on page-load.
+ * Framework implementation of waiting for JS events on page-load.
  */
 public class JavascriptWait {
 

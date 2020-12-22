@@ -2,7 +2,6 @@ package theinternet.pages;
 
 import com.framework.ui.annotations.Visible;
 import com.framework.ui.pages.BasePage;
-
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.annotations.Name;

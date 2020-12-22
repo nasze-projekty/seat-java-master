@@ -4,7 +4,7 @@
 
   <groupId>framework</groupId>
   <artifactId>framework</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <name>framework</name>
   <description>
   </description>
@@ -226,7 +226,7 @@
           <parallel>methods</parallel>
           <threadCount>${threads}</threadCount>
           <systemPropertyVariables>
-            <!-- For Frameworkium screenshots on test failure -->
+            <!-- For Framework screenshots on test failure -->
             <screenshotDirectory>
               ${project.build.directory}/screenshots
             </screenshotDirectory>

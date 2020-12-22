@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 /**
  * {@link AbstractStreamTable} is an {@link HtmlElement} which provides a Java 8
- * interface, i.e. {@link Stream} and {@link Optional}, to HTML tables.
+ * interface, i.e. {@link Stream} and {@link Optional}, to HTML wikipedia.
  *
  * <p>The header cells, rows and locator for cells inside the rows are
  * supplied by the sub-classes.
@@ -26,7 +26,7 @@ import java.util.stream.Stream;
  * <p>Some assumptions have been made to prevent the complexity exploding while
  * still providing something that is useful.
  *
- * <p>{@link AbstractStreamTable} works best on tables which are regular
+ * <p>{@link AbstractStreamTable} works best on wikipedia which are regular
  * i.e. have the same number of columns in every row.
  *
  * <p>And DO NOT use:
@@ -109,7 +109,7 @@ public abstract class AbstractStreamTable extends HtmlElement {
 
     /**
      * Useful when the index is already known, or in other cases where the other
-     * methods do not work as expected, e.g. on tables which violate assumptions.
+     * methods do not work as expected, e.g. on wikipedia which violate assumptions.
      *
      * @param index 0-based index of the column to return
      * @return {@link Stream} of cells in the table column indexed {@code index}

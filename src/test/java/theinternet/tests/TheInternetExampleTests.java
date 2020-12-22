@@ -10,8 +10,6 @@ import org.testng.annotations.Test;
 import theinternet.pages.*;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -78,31 +76,6 @@ public class TheInternetExampleTests extends BaseUITest {
     }
 
     @TmsLink("INT-5")
-    public void dynamic_loading() {
-
-        // Navigate to the dynamic loading hidden element page
-        DynamicLoadingExamplePage dynamicLoadingExamplePage =
-                WelcomePage.open().then().clickDynamicLoading().then().clickExample1();
-
-        // Click start and wait for element to be displayed
-        dynamicLoadingExamplePage.clickStart().then().waitForElementToBeDisplayed();
-
-        // Assert that the element is indeed displayed
-        assertThat(dynamicLoadingExamplePage.isElementDisplayed())
-                .isTrue();
-
-        // Navigate to the dynamic loading element not yet rendered page
-        DynamicLoadingExamplePage dynamicLoadingPage =
-                WelcomePage.open().then().clickDynamicLoading().then().clickExample2();
-
-        // Click start and wait for element to be displayed
-        dynamicLoadingPage.clickStart().then().waitForElementToBeDisplayed();
-
-        // Assert that the element is indeed present
-        assertThat(dynamicLoadingPage.isElementDisplayed()).isTrue();
-    }
-
-    @TmsLink("INT-6")
     public void file_download() {
 
         // Navigate to the download page
@@ -113,7 +86,7 @@ public class TheInternetExampleTests extends BaseUITest {
                 .contains("some-file.txt");
     }
 
-    @TmsLink("INT-8")
+    @TmsLink("INT-6")
     public void form_authentication() {
 
         // Navigate to the form authentication page
@@ -133,26 +106,7 @@ public class TheInternetExampleTests extends BaseUITest {
         assertThat(successPage.getSource()).contains("Welcome to the Secure Area");
     }
 
-    @TmsLink("INT-15")
-    public void iframe_test() {
-
-        IFramePage iframePage = WelcomePage.open().then().clickFramesLink().clickIFrameLink();
-
-        // Clear text
-        iframePage.clearTextInEditor();
-
-        // Enter some text in the editor
-        String text = "hello";
-        iframePage.enterTextInEditor(text);
-
-        // Assert that it entered it correctly
-        assertThat(iframePage.getTextInEditor()).isEqualTo(text);
-
-        // Enter some bold text in the editor
-        iframePage.enterBoldTextInEditor(" some more text");
-    }
-
-    @TmsLink("INT-9")
+    @TmsLink("INT-7")
     public void hovers() {
 
         // Navigate to the hovers page
@@ -162,7 +116,7 @@ public class TheInternetExampleTests extends BaseUITest {
         assertThat(hoversPage.getFirstFigureCaption()).contains("name: user1");
     }
 
-    @TmsLink("INT-11")
+    @TmsLink("INT-8")
     public void javascript_alerts() {
 
         // Navigate to the javascript alerts page
@@ -191,7 +145,7 @@ public class TheInternetExampleTests extends BaseUITest {
                 .isEqualTo("You entered: " + textToEnter);
     }
 
-    @TmsLink("INT-12")
+    @TmsLink("INT-9")
     public void key_presses() {
 
         // Navigate to the key presses page
@@ -202,32 +156,5 @@ public class TheInternetExampleTests extends BaseUITest {
 
         assertThat(keyPressesPage.getResultText())
                 .isEqualTo("You entered: " + Keys.ENTER.name());
-    }
-
-    @TmsLink("INT-14")
-    @Test(description = "Table Manipulation & Validation")
-    public void sort_data_table() {
-
-        // Navigate to the sortable data tables page
-        SortableDataTablesPage sortableDataTablesPage =
-                WelcomePage.open().then().clickSortableDataTablesLink();
-
-        // Assert that Table 1 contains "http://www.jdoe.com" in the web site column
-        assertThat(sortableDataTablesPage
-                .getTable1ColumnContents("Web Site")
-                .anyMatch(url -> Objects.equals(url, "http://www.jdoe.com")))
-                .isTrue();
-
-        List<String> lastNameColumn = sortableDataTablesPage
-                // Sort Table 2 by last name column
-                .sortTable2ByColumnName("Last Name")
-                .getTable2ColumnContents("Last Name")
-                .collect(Collectors.toList());
-
-        // Confirm that "Bach" is then the first surname in table 2
-        assertThat(lastNameColumn.get(0)).isEqualTo("Bach");
-
-        // Confirm that the column is then ordered by the last name
-        assertThat(lastNameColumn).isInOrder();
     }
 }

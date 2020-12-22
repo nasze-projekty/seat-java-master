@@ -106,12 +106,12 @@ public abstract class BasePage<T extends BasePage<T>> {
      * <ul>
      * <li>Initialises fields with lazy proxies</li>
      * <li>Waits for Javascript events including document ready & JS frameworks (if applicable)</li>
-     * <li>Processes Frameworkium visibility annotations e.g. {@link Visible}</li>
+     * <li>Processes Framework visibility annotations e.g. {@link Visible}</li>
      * <li>Log page load to Allure and Capture</li>
      * </ul>
      *
      * @return the PageObject, of type T, populated with lazy proxies which are
-     * checked for visibility based upon appropriate Frameworkium annotations.
+     * checked for visibility based upon appropriate Framework annotations.
      */
     @SuppressWarnings("unchecked")
     public T get() {

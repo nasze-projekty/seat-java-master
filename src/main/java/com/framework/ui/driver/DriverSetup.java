@@ -151,7 +151,7 @@ public class DriverSetup {
             logger.fatal(message, ex);
             throw new IllegalArgumentException(message
                     + "\nFully qualified class name is required. "
-                    + "e.g. com.frameworkium.ui.MyCustomImpl");
+                    + "e.g. com.framework.ui.MyCustomImpl");
         } catch (ClassCastException ex) {
             String message = String.format(
                     "Custom browser implementation class '%s' does not implement the Driver interface.",
