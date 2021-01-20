@@ -12,9 +12,11 @@
   <developers/>
   <contributors/>
 
-  <modules/>
+  <!-- #################################
+    EDIT SETTINGS BELOW THIS LINE IS VIOLATION OF GXP RULES
+    ################################# -->
 
-  <distributionManagement/>
+  <modules/>
 
   <properties>
     <threads>1</threads>
@@ -93,8 +95,7 @@
       <version>${truth.version}</version>
     </dependency>
 
-    <!-- Required so that Google Truth works.
-    Also used in some parts of the code -->
+    <!-- Required so that Google Truth works-->
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
@@ -273,31 +274,6 @@
         </configuration>
       </plugin>
 
-      <!-- Used to attach sources to jar
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-source-plugin</artifactId>
-          <version>3.1.0</version>
-          <executions>
-              <execution>
-                  <id>attach-sources</id>
-                  <goals>
-                      <goal>jar</goal>
-                  </goals>
-              </execution>
-          </executions>
-      </plugin>
-
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.1.0</version>
-          <configuration>
-              <additionalOptions>-Xdoclint:none</additionalOptions>
-          </configuration>
-      </plugin>
-      -->
-
       <!-- Release a new version with Maven, saving a lot of repetitive work.
       Releasing a project is made in two steps: prepare and perform -->
       <plugin>
@@ -320,5 +296,12 @@
       </plugin>
     </plugins>
   </build>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>RocheRepository-snapshots</name>
+      <url>http://repository.intranet.roche.com/artifactory/libs-snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 
 </project>
