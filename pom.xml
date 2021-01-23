@@ -1,20 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>seat</groupId>
-    <artifactId>framework</artifactId>
-    <version>1.0.0</version>
-    <name>SEAT</name>
+    <groupId>Design</groupId>
+    <artifactId>tool</artifactId>
+    <version>1.0.1</version>
+    <name>depend</name>
+    <description>
+    </description>
+    <url/>
+    <developers/>
+    <contributors/>
 
-
-    <modules />
+    <modules/>
 
     <properties>
         <threads>1</threads>
-        <groups />
+        <groups/>
         <aspectj.version>1.9.4</aspectj.version>
-        <allure.version>2.12.1</allure.version>
-        <truth.version>1.0</truth.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -24,157 +27,18 @@
         <maven>3.3.9</maven>
     </prerequisites>
 
-    <scm>
-        <connection>scm:git:https://bitbucket.roche.com/stash/scm/automatio/exampleframework.git</connection>
-        <tag>1.0.0</tag>
-    </scm>
-
     <!-- Check for updates with mvn versions:display-dependency-updates -->
     <dependencies>
         <!-- Selenium related -->
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ru.yandex.qatools.htmlelements</groupId>
-            <artifactId>htmlelements-java</artifactId>
-            <version>1.20.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.paulhammant</groupId>
-            <artifactId>ngwebdriver</artifactId>
-            <version>1.1.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.uadetector</groupId>
-            <artifactId>uadetector-resources</artifactId>
-            <version>2014.10</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.saucelabs</groupId>
-            <artifactId>sauce_testng</artifactId>
-            <version>2.1.25</version>
-        </dependency>
-        <dependency>
-            <groupId>com.saucelabs</groupId>
-            <artifactId>saucerest</artifactId>
-            <version>1.0.42</version>
-        </dependency>
-
-        <!-- Test related -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.14.3</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.truth</groupId>
-            <artifactId>truth</artifactId>
-            <version>${truth.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.truth.extensions</groupId>
-            <artifactId>truth-java8-extension</artifactId>
-            <version>${truth.version}</version>
-        </dependency>
-
-        <!-- Required so that Google Truth works-->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>28.0-jre</version>
-        </dependency>
-
-        <!-- Logging related -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.12.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.12.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.26</version>
-        </dependency>
-
-        <!-- API related -->
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>4.0.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-xml</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- Explicitly adding utilities -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.9</version>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20180813</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.9.9</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>2.5.7</version>
-            <type>pom</type>
-        </dependency>
-
-        <!-- Unit Testing -->
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-core</artifactId>
-            <version>1.3-groovy-2.5</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Integration Testing -->
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.6</version>
-            <scope>test</scope>
+            <groupId>seat</groupId>
+            <artifactId>framework</artifactId>
+            <version>1.0.0-20210122.171523-1</version>
         </dependency>
     </dependencies>
+    <repositories/>
 
-    <repositories />
-
-    <pluginRepositories />
+    <pluginRepositories/>
 
     <build>
         <!-- Check for updates with mvn versions:display-plugin-updates -->
@@ -269,27 +133,6 @@
                     <reportVersion>${allure.version}</reportVersion>
                 </configuration>
             </plugin>
-
-            <!-- Release a new version with Maven, saving a lot of repetitive work.
-            Releasing a project is made in two steps: prepare and perform -->
-            <plugin>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
-                <configuration>
-                    <useReleaseProfile>false</useReleaseProfile>
-                    <tagNameFormat>@{version}</tagNameFormat>
-                </configuration>
-            </plugin>
-
-            <!--  Helps find latest plugins for your project  -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.7</version>
-                <configuration>
-                    <generateBackupPoms>false</generateBackupPoms>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -297,12 +140,13 @@
         <repository>
             <id>central</id>
             <name>RocheRepository-releases</name>
-            <url>http://repository.intranet.roche.com/artifactory/seat-releases</url>
+            <url>http://repository.intranet.roche.com/artifactory/seat-snapshot</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
             <name>RocheRepository-snapshots</name>
-            <url>http://repository.intranet.roche.com/artifactory/seat-releases</url>
+            <url>http://repository.intranet.roche.com/artifactory/seat-snapshot</url>
         </snapshotRepository>
     </distributionManagement>
+
 </project>

@@ -1,6 +1,5 @@
 package wikipedia.pages;
 
-
 import com.framework.ui.annotations.Visible;
 import com.framework.ui.element.OptimisedStreamTable;
 import com.framework.ui.pages.BasePage;
