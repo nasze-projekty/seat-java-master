@@ -1,18 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>seat</groupId>
     <artifactId>framework</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>SEAT</name>
 
 
-    <modules/>
+    <modules />
 
     <properties>
         <threads>1</threads>
-        <groups/>
+        <groups />
         <aspectj.version>1.9.4</aspectj.version>
         <allure.version>2.12.1</allure.version>
         <truth.version>1.0</truth.version>
@@ -27,7 +26,7 @@
 
     <scm>
         <connection>scm:git:https://bitbucket.roche.com/stash/scm/automatio/exampleframework.git</connection>
-        <tag>releaes-tag</tag>
+        <tag>1.0.0</tag>
     </scm>
 
     <!-- Check for updates with mvn versions:display-dependency-updates -->
@@ -173,9 +172,9 @@
         </dependency>
     </dependencies>
 
-    <repositories/>
+    <repositories />
 
-    <pluginRepositories/>
+    <pluginRepositories />
 
     <build>
         <!-- Check for updates with mvn versions:display-plugin-updates -->
