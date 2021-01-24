@@ -31,9 +31,9 @@
     <dependencies>
         <!-- Selenium related -->
         <dependency>
-            <groupId>seat</groupId>
-            <artifactId>framework</artifactId>
-            <version>1.0.0-20210122.171523-1</version>
+            <groupId>com.seat.tool</groupId>
+            <artifactId>seat-java</artifactId>
+            <version>1.0.1-20210124.060818-1</version>
         </dependency>
 
         <!-- Used in CreateScreenshot -->
