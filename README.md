@@ -84,7 +84,7 @@ Say you’re expecting an element on a web page, and you want to wait until it�
 ```
 WebElement button = driver.findElement(By.cssSelector("#search_button");
 WebDriverWait wait = new WebDriverWait(driver, 10);
-wait.until(ExpectedConditions.visibilityOf(button));
+wait(ExpectedConditions.visibilityOf(button));
 button.click();
 ```
 You could probably do this with a (longish) one-liner, but if we were trying to make the code nice and maintainable etc.
@@ -96,7 +96,7 @@ private WebElement button;
 
 // when you want to use it
 WebDriverWait wait = new WebDriverWait(driver, 10);
-wait.until(ExpectedConditions.visibilityOf(button));
+wait(ExpectedConditions.visibilityOf(button));
 button.click();
 ```
 Which is nicer, because:
@@ -260,27 +260,14 @@ If you build it right, when the service or page that you’re testing changes, b
                 \->| SERVICES|->||                   ||
                    |_________|  ||___________________||
 
-Going BDD?
-The same should apply - try and keep core ‘page’ or ‘service’ level functionality/methods out of your steps - as there may end up being multiple steps that use the same pages/buttons/endpoints etc. You only want to have to update that in one place. Steps are for chaining together operations so that you can keep your features and scenarios as natural-reading as possible.
-
-                                     _________    _____________________
-                                    |         |  ||                   ||
-     __________      _________   /->|  PAGES  |->||                   ||
-    |          |    |         | /   |_________|  ||   SYSTEM UNDER    ||
-    | FEATURES | -> |  STEPS  |      _________   ||       TEST        ||
-    |__________|    |_________| \   |         |  ||                   ||
-                                 \->| SERVICES|->||                   ||
-                                    |_________|  ||___________________||
-
-
 ## <a name="tests"></a>Tests
 
 ### BaseTest
-Test classes must extend `com.Framework.core.ui.tests.BaseTest`. This handles the setup and teardown of the WebDriver / AppiumDriver sessions. If you do not need “drivers” - e.g. you’re writing some API tests, you should extend `com.Framework.core.api.tests.BaseTest` instead.
+Test classes must extend `com.framework.ui.tests.BaseUITest`. This handles the setup and teardown of the WebDriver / AppiumDriver sessions. If you do not need “drivers” - e.g. you’re writing some API tests, you should extend `com.framework.api.tests.BaseAPITest` instead.
 For example:
 ```
-public class DynamicLoadingWebTest extends BaseTest { 
-    //... 
+public class DynamicLoadingWebTest extends BaseUITest {
+    //...
 }
 ```
 
@@ -304,7 +291,7 @@ ________________________________________
 ## <a name="page-objects"></a>Page Objects
 ### Code Structure
 #### BasePage
-Page objects must extend `com.Framework.core.ui.pages.BasePage<T>`.
+Page objects must extend `com.framework.ui.pages.BasePage<T>`.
 Where T is the type of the page you are creating e.g. `LoginPage`.
 #### Elements (Fields)
 Elements should be `private` and should only be used by this class.
@@ -321,7 +308,7 @@ Elements should be `private` and should only be used by this class.
    -	built-in Java data types e.g. String or
    -	custom data types or
    -	nothing e.g. `void`
-   
+
    Nothing Framework or Selenium specific e.g. WebElement should be returned
 ##### Navigation
 If an action on a page results in moving to a new page, then you can instantiate a new Page Object in one of two ways:
@@ -336,36 +323,36 @@ If performing an action on a page results in staying on the same page, then you 
 #### Example
 ```
 public class LoginPage extends BasePage<LoginPage> {
-    
+
     @Name("Username text field")
     @Visible
     @FindBy(css="input#inputEmail")
     private WebElement usernameField;
-    
+
     @Name("Password text field")
     @FindBy(css="input#inputPassword")
     private WebElement passwordField;
-    
+
     @Step("Enter credentials and return logged in homepage")
     public LoggedInHomepage validLogin(String username, String password) {
         login(username, password);
         return new LoggedInHomepage().get();
     }
-    
+
     @Step("Enter credentials and expect to stay on the login screen")
     public LoginPage invalidLogin(String username, String password) {
         login(username, password);
         return this;
     }
-    
+
     @Step("Enter username {0} and password {1} and click login")
     private void login(String username, String password) {
         usernameField.clear();
         usernameField.sendKeys(username);
-    
+
         passwordField.clear();
         passwordField.sendKeys(password);
-    
+
         loginButton.click();
     }
 }
@@ -404,20 +391,20 @@ You should not need to do many explicit waits - the `@Visible` and `@Invisible` 
 However - there are times when you’ll need to wait. For example:
 -	we want to click a button, but
 -	the button is initially hidden; but made visible by linking the ‘more’ arrow
-First we click the ‘more’ arrow, then wait for the button to be visible. We can use `wait.until` and `ExpectedConditions`, as in the following example:
+First we click the ‘more’ arrow, then wait for the button to be visible. We can use `wait` and `ExpectedConditions`, as in the following example:
 public class MyPage extends BasePage<MyPage> {
-  ```  
+  ```
     @Visible
     @FindBy(id = "more-arrow")
     private WebElement moreArrow;
-    
+
     // Initially hidden button
     @FindBy(css = "div#button")
     private WebElement myButton;
-    
+
     public Page clickInitiallyHiddenButton() {
       moreArrow.click();
-      wait.until(ExpectedConditions.visibilityOf(myButton));
+      wait(ExpectedConditions.visibilityOf(myButton));
       myButton.click();
       return this;
     }
@@ -425,7 +412,6 @@ public class MyPage extends BasePage<MyPage> {
 ```
 [ExpectedConditions][ExpectedConditions] has lots of methods to help your waits - e.g. `elementToBeSelected(...)`, `titleContains(...)`, `textToBePresentInElement(...)`, `textToBePresentInElementValue(...)`, etc.
 Framework has it’s own extension to `ExpectedConditions`, called `ExtraExpectedConditions`.
-NB - Framework (pre v3.0) has implicit waits due to our use of HtmlElements.
 ________________________________________
 ## <a name="identifying"></a>Identifying Web Elements
 We identify elements on web pages using the `@FindBy` annotation, and passing in selector strings.
@@ -493,7 +479,7 @@ import org.apache.logging.log4j.Logger;
 public class SomeClass extends BasePageOrBaseTestMaybe {
 
     private Logger logger = LogManager.getLogger(SomeClass.class);
-    
+
     public void someMethod() {
         logger.info("I'm logging an info message");
         logger.warn("I'm logging a warn message");
@@ -810,19 +796,19 @@ Since 3.0.0:
 mvn clean verify -DcustomBrowserImpl=my.package.ChromeIncognitoImpl
 ```
 
-###### Using Appium 
+###### Using Appium
 
 This can be achieved by implementing a CustomBrowserImpl.
 
 ```
-import com.Framework.core.ui.driver.AbstractDriver;
+import com.framework.ui.driver.AbstractDriver;
 import io.appium.java_client.windows.WindowsDriver;
 import io.appium.java_client.windows.WindowsElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 
-import static com.Framework.core.common.properties.Property.*;
+import static com.framework.common.properties.Property.*;
 
 public class WinAppDriverImpl extends AbstractDriver {
 
@@ -894,10 +880,10 @@ Your tests are supposed to be simulating user actions and user flows, so injecti
 
 ###### Example: Un-Hiding Hidden Controls
 
-In order to upload a file to a site, the ‘choose files’ input control is used. 
+In order to upload a file to a site, the ‘choose files’ input control is used.
 
 
-##### Problem 
+##### Problem
 
 In some cases, the input might be hidden on the page, with a div occluding it:
 
@@ -926,7 +912,7 @@ public void tryAnUpload(File fileToUpload) {
 On page load, Framework will try to un-hide the control with JavaScript. If you’d like to control when it happens, use `visibility.forceVisible(uploadInput)` instead of `@ForceVisible`.
 
 
-###### Old Solution 
+###### Old Solution
 
 The old solution was to use a JavaScript executor in your page object to modify the style of the input such that selenium can interact with it.
 The method below demonstrates this.
@@ -935,17 +921,17 @@ public class MyPage extends BasePage<MyPage> {
     @Name("Upload input")
     @FindBy(css = "div#upload-button input")
     private WebElement uploadInput;
-    
+
     @Step("Upload a file")
     public void tryAnUpload(File fileToUpload) {
       // CSS Locator for the hidden input button
       String cssSelector = "div#upload-button input";
-    
+
       // Use JavaScript executor to make the input button visible
       executeJS("document.querySelector('" + cssSelector + "').style.width = '200px'");
       executeJS("document.querySelector('" + cssSelector + "').style.height = '10px'");
       executeJS("document.querySelector('" + cssSelector + "').style.opacity = '100'");
-    
+
       // Send the file path directly to the input button via sendKeys
       uploadInput.sendKeys(fileToUpload.getAbsolutePath());
     }
@@ -954,7 +940,7 @@ public class MyPage extends BasePage<MyPage> {
 This sort of idea can also be used if you need to do more than `@ForceVisible` or would like to have more control over what happens, it’s just a bit more verbose.
 
 
-##### Trade Offs 
+##### Trade Offs
 
 
 UI automation testing is largely about simulating user’s behaviour as best we can. We could use some other tool (e.g. AutoIt, Sikuli, call JavaScript etc.), but the additional flakiness and complexity this introduces might outweigh the benefit.
@@ -980,7 +966,7 @@ requently but breaks the build when it does then Framework has a solution.
 Add the following to your `@Test` annotation and if the test fails it will be marked as `SKIP` and then retried (up to `maxRetryCount` or a default of once).
 ```
 public class MyTest extends BaseUITest {
-    
+
     @Test(retryAnalyzer = RetryFlakyTest.class)
     public void test_which_fails_less_than_1_per_cent() {
         // ...
@@ -1007,6 +993,6 @@ ________________________________________
 [bootstrapium]: https://github.com/jvanderwee/bootstrapium
 [rest-assured]: http://rest-assured.io/
 [mvn]: https://maven.apache.org/download.cgi
-[geckodriver]: https://github.com/mozilla/geckodriver/releases
-[chromedriver]: https://sites.google.com/a/chromium.org/chromedriver/home
+[geckodriver]: https://drive.google.com/drive/u/0/folders/1LF07f5wCUUN_kOjHx-4uL4IsQFjfpcqY
+[chromedriver]: https://drive.google.com/drive/u/0/folders/1LF07f5wCUUN_kOjHx-4uL4IsQFjfpcqY
 [allure]: https://docs.qameta.io/allure/
