@@ -48,7 +48,7 @@ public class DeveloperGuidePage extends BasePage<DeveloperGuidePage> {
                 By.xpath(String.format(
                         "//nav[@id='navbar-main']//a[text()='%s']",
                         linkTitle)));
-        wait.until(ExpectedConditions.visibilityOf(searchResultsLink));
+        wait(ExpectedConditions.visibilityOf(searchResultsLink));
         searchResultsLink.click();
         return this;
     }
@@ -56,7 +56,7 @@ public class DeveloperGuidePage extends BasePage<DeveloperGuidePage> {
     @Step("Get developer guide article title")
     public String getGuideTitle(String expectedText) {
         // required to ensure test is more robust i.e. this can't return ""
-        wait.until(ExpectedConditions.textToBePresentInElement(guideTitle, expectedText));
+        wait(ExpectedConditions.textToBePresentInElement(guideTitle, expectedText));
         return guideTitle.getText();
     }
 
