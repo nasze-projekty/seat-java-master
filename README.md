@@ -504,14 +504,6 @@ public class ComponentExampleTest extends BaseTest {
     }
 }
 ```
-OR, if using BDD:
-```
-@TestCaseId:JIRA-1411
-Feature: My Lovely Feature that needs testing
-
-@TestCaseId:JIRA-1412
-Scenario: Or my lovely scenario
-```
 ##### 2 - Make sure test is in Zephyr for Jira test plan
 Make a Zephyr for Jira test plan, and make sure your your test is in a particular version & test cycle. NB: the cycle can’t be ‘Ad Hoc’, and the version can’t be ‘Unscheduled’.
 ##### 3 - Provide JIRA details at runtime
