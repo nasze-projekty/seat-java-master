@@ -46,7 +46,7 @@ public class FormAuthenticationPage extends BasePage<FormAuthenticationPage> {
     }
 
     public FormAuthenticationPage expectErrorMessage() {
-        wait.until(ExpectedConditions.visibilityOf(errorMessage));
+        wait(ExpectedConditions.visibilityOf(errorMessage));
         return this;
     }
 }

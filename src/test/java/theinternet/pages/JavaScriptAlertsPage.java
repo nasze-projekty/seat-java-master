@@ -37,7 +37,7 @@ public class JavaScriptAlertsPage extends BasePage<JavaScriptAlertsPage> {
 
         driver.switchTo().alert().accept();
 
-        wait.until(visibilityOf(resultArea));
+        wait(visibilityOf(resultArea));
 
         return this;
     }
@@ -48,7 +48,7 @@ public class JavaScriptAlertsPage extends BasePage<JavaScriptAlertsPage> {
 
         driver.switchTo().alert().dismiss();
 
-        wait.until(visibilityOf(resultArea));
+        wait(visibilityOf(resultArea));
 
         return this;
     }
@@ -59,7 +59,7 @@ public class JavaScriptAlertsPage extends BasePage<JavaScriptAlertsPage> {
 
         driver.switchTo().alert().accept();
 
-        wait.until(visibilityOf(resultArea));
+        wait(visibilityOf(resultArea));
 
         return this;
     }
@@ -70,7 +70,7 @@ public class JavaScriptAlertsPage extends BasePage<JavaScriptAlertsPage> {
 
         driver.switchTo().alert().dismiss();
 
-        wait.until(visibilityOf(resultArea));
+        wait(visibilityOf(resultArea));
 
         return this;
     }
