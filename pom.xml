@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.seat.tool</groupId>
-    <artifactId>seat-java</artifactId>
+    <artifactId>selenium-test</artifactId>
     <version>1.0.0</version>
     <description>
     </description>
@@ -26,9 +26,9 @@
     <dependencies>
         <!-- Selenium related -->
         <dependency>
-            <groupId>com.seat.tool</groupId>
+            <groupId>com.roche.seat</groupId>
             <artifactId>seat-java</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
 
         <!-- Used in CreateScreenshot -->
